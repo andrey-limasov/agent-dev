@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / секреты
+.env
+.env.*
+!.env.example
+
+# Векторные хранилища и артефакты RAG
+chroma/
+.chroma/
+*.sqlite3
+
+# IDE / ОС
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Временные файлы редакторов
+*~
+*.tmp
+Untitled-*.md
+
+# Преподавательские материалы (только ветка teacher)
+*-teacher*
+*-teacher/
