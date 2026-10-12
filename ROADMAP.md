@@ -1,7 +1,7 @@
 # 🗺️ ROADMAP.md — Дорожная карта разработки курса
 
-**Версия:** 1.1
-**Дата:** 2026-09-20
+**Версия:** 1.7
+**Дата:** 2026-10-12
 **Статус:** В разработке
 
 ---
@@ -73,16 +73,14 @@
 - [x] `workshops-teacher/workshop1/workshop-1-hallucination-cards.md` — Карточки галлюцинаций
 - [x] `workshops-teacher/workshop1/workshop-1-tool-design-task.md` — Задание на проектирование первого Tool
 - [ ] `workshops-teacher/workshop1/workshop-1-slides.md` — Презентация воркшопа 1
-- [ ] `workshops-teacher/practice1/practice-1-scenario.md` — Сценарий практики 1
-- [ ] `workshops-teacher/practice1/practice-1-checklist.md` — Чек-лист для практики 1
-- [ ] `workshops-teacher/practice1/practice-1-troubleshooting.md` — Типичные проблемы и решения
+- [x] `workshops-teacher/practice1/practice-1-scenario.md` — Сценарий практики 1 (DONE 2026-10-12)
 
 **Зависимости:**
 
 - Все материалы Фазы 0 должны быть завершены
 - Сценарий практики зависит от сценария воркшопа (логическая связность)
 
-**Критерий готовности:** Преподаватель может провести первый цикл без дополнительных вопросов. 🔄 **3 / 7**
+**Критерий готовности:** Преподаватель может провести первый цикл без дополнительных вопросов. 🔄 **4 / 5**
 
 ---
 
@@ -324,9 +322,7 @@ project-requirements-ai.md + definition-of-done-ai.md
 ### Для практики (180 мин):
 
 - [ ] `workshops/practice-N.md` — материалы для студентов
-- [ ] `workshops-teacher/practiceN/practice-N-scenario.md` — поминутный сценарий
-- [ ] `workshops-teacher/practiceN/practice-N-checklist.md` — чек-лист для студентов
-- [ ] `workshops-teacher/practiceN/practice-N-troubleshooting.md` — типичные проблемы
+- [ ] `workshops-teacher/practiceN/practice-N-scenario.md` — сценарий: подготовка, тайминг, стоп-точки «если — то», пары для peer review, критерии оценки
 
 ### Шаблоны и артефакты:
 
@@ -342,20 +338,20 @@ project-requirements-ai.md + definition-of-done-ai.md
 | Фаза | Готово | Прогресс | Статус |
 |------|--------|----------|--------|
 | Фаза 0: Фундамент | 11 / 11 | 100 % | ✅ |
-| Фаза 1: Цикл 1 — детализация | 3 / 7 | 43 % | 🔄 |
+| Фаза 1: Цикл 1 — детализация | 4 / 5 | 80 % | 🔄 |
 | Фаза 2: Циклы 2-4 | 0 / 21 | 0 % | ⏳ |
 | Фаза 3: Циклы 5-6 | 0 / 16 | 0 % | ⏳ |
 | Фаза 4: Циклы 7-8 | 0 / 16 | 0 % | ⏳ |
-| **Итого** | **14 / 71** | **20 %** | 🔄 |
+| **Итого** | **15 / 69** | **22 %** | 🔄 |
 
 ```
 Фаза 0: Фундамент                    ████████████████████ 100% ✅
-Фаза 1: Цикл 1 — Детализация         █████████░░░░░░░░░░░  43% 🔄
+Фаза 1: Цикл 1 — Детализация         ████████████████░░░░  80% 🔄
 Фаза 2: Циклы 2-4                    ░░░░░░░░░░░░░░░░░░░░   0% ⏳
 Фаза 3: Циклы 5-6                    ░░░░░░░░░░░░░░░░░░░░   0% ⏳
 Фаза 4: Циклы 7-8                    ░░░░░░░░░░░░░░░░░░░░   0% ⏳
 
-Общий прогресс                       ████░░░░░░░░░░░░░░░░  20%
+Общий прогресс                       ████░░░░░░░░░░░░░░░░  22%
 ```
 
 ---
@@ -364,9 +360,8 @@ project-requirements-ai.md + definition-of-done-ai.md
 
 ### Немедленно (P0):
 
-1. `workshops-teacher/practice1/practice-1-scenario.md` — без него практика 1 не проводится
-2. `workshops-teacher/practice1/practice-1-checklist.md` — чек-лист peer review для студентов
-3. `workshops-teacher/practice1/practice-1-troubleshooting.md` — Ollama, модели, `.env`
+1. `workshops/practice-2.md` и `workshops-teacher/practice2/practice-2-scenario.md` (неделя 4)
+2. Сообщить курсу «Конфигурирование»: CrewAI 1.15.x требует `pydantic<2.13` (у команд пин 2.14.0), `*.log` в шаблоне `.gitignore`, `cp .env.example .env` на неделе 6 перезаписывает блок AI-слоя
 
 ### На этой неделе (P1):
 
@@ -392,7 +387,8 @@ project-requirements-ai.md + definition-of-done-ai.md
 | 2026-09-29 | 1.4 | Локальная модель заменена во всех материалах: `qwen2.5-coder:7b` → `qwen3:4b-instruct` (альтернатива `qwen2.5:7b`). Причина: у `qwen2.5-coder` в Ollama нет возможности **tools**, сервер отклоняет запрос с инструментами (`does not support tools`), то есть агент с Tool на ней не работает в принципе. В `practice-1.md` добавлена обязательная проверка function calling через curl (в «Подготовке» и в «Проверке окружения») и строки в troubleshooting. | a-limasov |
 | 2026-09-29 | 1.5 | Alibaba Cloud / Qwen API убраны из всех материалов курса. Облачный путь: OpenRouter (по умолчанию) и Yandex AI Studio (российский сервис, оплата рублями); в конфиг добавлена переменная `CLOUD_PROJECT` (идентификатор каталога Yandex), фабрика передаёт `project`. Проверка ключа перед занятием теперь тоже проверяет вызов функций. | a-limasov |
 | 2026-09-29 | 1.6 | Воркшоп 2 (цикл 2, неделя 3): сценарий, карточки инцидентов, колода атак, эталонные спецификации, `workshop-2.md`, `materials-2.md`. Формат: разбор инцидентов → три измерения контракта (Доступ / Объём / Сбой) → Red/Blue Team на спецификациях команд → Excessive Agency и «смертельная триада» → атаки становятся тестами практики 2. Подготовка студентов сокращена до ≈ 60 мин. | a-limasov |
+| 2026-10-12 | 1.7 | Практика 1 — DONE. Проверка выполнимости на двух состояниях команды (недели 2 и 4 «Конфигурирования») с `qwen3:4b-instruct`, `qwen2.5:7b` и OpenRouter: Tool вызывается обеими моделями, путь «Не успеваете?» реалистичен. В `practice-1.md`: Python 3.11–3.13 (CrewAI не ставится на 3.14), установка CrewAI в подготовке (10–40 мин), один venv со снятым пином `pydantic`, логи трассы в PR (`!ai/traces/*.log`), `.env` создаётся впервые, ADR `docs/adr/ai-001-…` (фреймворк + Tool). Создан сценарий практики 1; отдельные чек-лист и troubleshooting не нужны — эти разделы есть в `practice-1.md`. Обещание unit-теста убрано из воркшопа 1. Не проверено: время установки на машине без кеша pip, путь Б на Yandex AI Studio, Windows PowerShell 5.1 на второй машине, консоль cp1251. | a-limasov |
 
 ---
 
-**Следующее обновление:** После завершения `workshops-teacher/practice1/practice-1-scenario.md`
+**Следующее обновление:** После завершения `workshops/practice-2.md`
