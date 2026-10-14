@@ -42,6 +42,7 @@ multi-agent/
 │   ├── practice-1.md                  # Практика 1: Первый Tool (180 мин)
 │   ├── materials-1.md                 # Материалы для СРС к циклу 1 (статьи, курсы, видео)
 │   ├── workshop-2.md                  # Воркшоп 2: Инструменты агентов (90 мин)
+│   ├── practice-2.md                  # Практика 2: Инструменты для работы с кодом (180 мин)
 │   └── materials-2.md                 # Материалы для СРС к циклу 2
 │
 ├── workshops-teacher/                 # Методические материалы для преподавателя (только ветка teacher)
@@ -51,15 +52,18 @@ multi-agent/
 │   │   └── workshop-1-tool-design-task.md      # Задание на проектирование первого Tool
 │   ├── practice1/
 │   │   └── practice-1-scenario.md     # Сценарий практики: тайминг, стоп-точки, критерии
-│   └── workshop2/
-│       ├── workshop-2-scenario.md     # Поминутный сценарий воркшопа
-│       ├── workshop-2-reference-specs.md       # Эталонные спецификации инструментов
-│       ├── workshop-2-incident-cards.md        # Карточки инцидентов
-│       └── workshop-2-attack-cards.md          # Карточки атак
+│   ├── workshop2/
+│   │   ├── workshop-2-scenario.md     # Поминутный сценарий воркшопа
+│   │   ├── workshop-2-reference-specs.md       # Эталонные спецификации инструментов
+│   │   ├── workshop-2-incident-cards.md        # Карточки инцидентов
+│   │   └── workshop-2-attack-cards.md          # Карточки атак
+│   └── practice2/
+│       └── practice-2-scenario.md     # Сценарий практики: тайминг, стоп-точки, критерии
 │
 ├── templates/                         # Шаблоны для студентов
 │   ├── test_agent_mocked.py           # Шаблон тестирования с моками LLM
 │   ├── adr-001-ai-framework-choice.md # Шаблон Architecture Decision Record
+│   ├── tool-lsp-example.py            # Каркас трёх инструментов для кода (копируется как ai/tools/code_tools.py)
 │   └── sample-backend/                # Учебный бэкенд (FastAPI, main.py), если своего у команды ещё нет
 ```
 
@@ -74,7 +78,7 @@ course-overview.md
     ↓ (определяет стек и философию)
 syllabus.md
     ↓ (детализирует по неделям)
-workshops/workshop-N.md ←→ workshops-teacher/workshopN/workshop-N-scenario.md
+workshops/workshop-N.md ←→ workshops-teacher/workshopN/workshop-N-scenario.md (ветка teacher)
     ↓ (задания для студентов)        ↑ (методическое обоснование)
 workshops/practice-N.md
     ↓ (требования к коду)
@@ -185,7 +189,6 @@ project-requirements-ai.md
 | Узнать требования к проекту | `project-requirements-ai.md` |
 | Проверить готовность работы | `definition-of-done-ai.md` |
 | Найти тему конкретной недели | `syllabus.md` (источник истины) |
-| Провести первое занятие (преподавателю) | `workshops-teacher/workshop1/workshop-1-scenario.md` — только в рабочей папке ветки `teacher` |
 | Дать задание студентам | `workshops/workshop-1.md` |
 | Выдать список материалов для СРС | `workshops/materials-1.md` |
 | Показать пример тестирования | `templates/test_agent_mocked.py` |
@@ -225,10 +228,11 @@ project-requirements-ai.md
 
 | Дата | Что изменено |
 |---|---|
+| 2026-10-13 | Структура проекта: `workshops/practice-2.md`, `templates/tool-lsp-example.py`, сценарий практики 2; у схемы зависимостей — пометка «ветка teacher»; из «Ключевых файлов» убрана строка со сценарием преподавателя |
 | 2026-10-13 | Структура проекта: в `templates/` добавлен `sample-backend/`; в «Ключевых файлах» уточнено, что сценарий воркшопа 1 есть только в ветке `teacher`; заголовок «Педагогическая концепция» — «при подготовке материалов» |
 | 2026-10-12 | Модель связи курсов: мульти-агентная система — помощник команды разработчиков бэкенда в отдельном репозитории; бэкенд — объект работы (только чтение, изменения — Pull Request людей). Переписаны контекст, концепция и схема выпускного проекта, раздел про репозиторий бэкенда, ограничение 4, pgvector — только в собственном контейнере помощника (стек, ограничение 7); в DoD-выжимку добавлен п. 7; структура проекта дополнена файлами цикла 2 и практики 1 |
 
 ---
 
 *Последнее обновление: 13 октября 2026*
-*Версия документа: 1.4*
+*Версия документа: 1.5*
