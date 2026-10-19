@@ -56,7 +56,10 @@ multi-agent/
 │   ├── materials-1.md                 # Материалы для СРС к циклу 1 (статьи, курсы, видео)
 │   ├── workshop-2.md                  # Воркшоп 2: Инструменты агентов (90 мин)
 │   ├── practice-2.md                  # Практика 2: Инструменты для работы с кодом (180 мин)
-│   └── materials-2.md                 # Материалы для СРС к циклу 2
+│   ├── materials-2.md                 # Материалы для СРС к циклу 2
+│   ├── workshop-3.md                  # Воркшоп 3: Память и RAG — схема пайплайна (90 мин)
+│   ├── practice-3.md                  # Практика 3: Поиск по документации, Tool search_docs (180 мин)
+│   └── materials-3.md                 # Материалы к циклу 3: СРС, корпус «Заметки», каркас схемы RAG
 │
 ├── workshops-teacher/                 # Методические материалы для преподавателя (только ветка teacher)
 │   ├── workshop1/
@@ -70,14 +73,22 @@ multi-agent/
 │   │   ├── workshop-2-reference-specs.md       # Эталонные спецификации инструментов
 │   │   ├── workshop-2-incident-cards.md        # Карточки инцидентов
 │   │   └── workshop-2-attack-cards.md          # Карточки атак
-│   └── practice2/
-│       └── practice-2-scenario.md     # Сценарий практики: тайминг, стоп-точки, критерии
+│   ├── practice2/
+│   │   └── practice-2-scenario.md     # Сценарий практики: тайминг, стоп-точки, критерии
+│   ├── workshop3/
+│   │   ├── workshop-3-scenario.md     # Поминутный сценарий воркшопа
+│   │   ├── workshop-3-cards.md        # Карточки памяти и чанкинга
+│   │   └── workshop-3-reference.md    # Эталоны: нарезка «Заметок», схема RAG
+│   └── practice3/
+│       └── practice-3-scenario.md     # Сценарий практики: тайминг, стоп-точки, критерии
 │
 ├── templates/                         # Шаблоны для студентов
 │   ├── test_agent_mocked.py           # Шаблон тестирования с моками LLM
 │   ├── adr-001-ai-framework-choice.md # Шаблон Architecture Decision Record
 │   ├── tool-lsp-example.py            # Каркас трёх инструментов для кода (копируется как ai/tools/code_tools.py)
-│   └── sample-backend/                # Учебный бэкенд (FastAPI, main.py), если своего у команды ещё нет
+│   ├── rag_pipeline.py                # Каркас индекса документации и Tool search_docs (копируется как ai/tools/rag_pipeline.py)
+│   ├── chunking-strategies.md         # Справка: нарезка документации на чанки в каркасе
+│   └── sample-backend/                # Учебный бэкенд «Заметки»: main.py, README, CONTRIBUTING, ADR — если своего ещё нет
 ```
 
 ---
@@ -241,6 +252,7 @@ project-requirements-ai.md
 
 | Дата | Что изменено |
 |---|---|
+| 2026-10-19 | Структура проекта: файлы цикла 3 — `workshop-3.md`, `practice-3.md`, `materials-3.md`, сценарии и эталоны `workshop3/`, `practice3/`; шаблоны `rag_pipeline.py`, `chunking-strategies.md`; в `sample-backend/` — документация «Заметок» |
 | 2026-10-14 | Модель веток: `main` публикуется в открытом репозитории `github.com/andrey-limasov/agent-dev`, `teacher` — только в приватном; новый подраздел «Как студенту получить материалы» (`git clone`, проверка, `git pull`, архив как запасной путь) |
 | 2026-10-13 | Структура проекта: `workshops/practice-2.md`, `templates/tool-lsp-example.py`, сценарий практики 2; у схемы зависимостей — пометка «ветка teacher»; из «Ключевых файлов» убрана строка со сценарием преподавателя |
 | 2026-10-13 | Структура проекта: в `templates/` добавлен `sample-backend/`; в «Ключевых файлах» уточнено, что сценарий воркшопа 1 есть только в ветке `teacher`; заголовок «Педагогическая концепция» — «при подготовке материалов» |
@@ -248,5 +260,5 @@ project-requirements-ai.md
 
 ---
 
-*Последнее обновление: 14 октября 2026*
-*Версия документа: 1.6*
+*Последнее обновление: 19 октября 2026*
+*Версия документа: 1.7*
