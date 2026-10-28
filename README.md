@@ -61,6 +61,7 @@ multi-agent/
 │   ├── practice-3.md                  # Практика 3: Поиск по документации, Tool search_docs (180 мин)
 │   ├── materials-3.md                 # Материалы к циклу 3: СРС, корпус «Заметки», каркас схемы RAG
 │   ├── workshop-4.md                  # Воркшоп 4: Паттерны оркестрации — архитектура Crew (90 мин)
+│   ├── practice-4.md                  # Практика 4: Первая Crew и цикл «генерация → линтер → исправление» (180 мин)
 │   └── materials-4.md                 # Материалы к циклу 4: СРС, справка по паттернам CrewAI, каркасы архитектуры Crew и ADR 004
 │
 ├── workshops-teacher/                 # Методические материалы для преподавателя (только ветка teacher)
@@ -94,6 +95,9 @@ multi-agent/
 │   ├── tool-lsp-example.py            # Каркас трёх инструментов для кода (копируется как ai/tools/code_tools.py)
 │   ├── rag_pipeline.py                # Каркас индекса документации и Tool search_docs (копируется как ai/tools/rag_pipeline.py)
 │   ├── chunking-strategies.md         # Справка: нарезка документации на чанки в каркасе
+│   ├── crewai_example.py              # Каркас запуска Crew «Исследователь → Кодер» (копируется как ai/run_crew.py)
+│   ├── generated_files.py             # Каркас Tool write_generated и второго корня run_linter (копируется как ai/tools/generated_files.py)
+│   ├── generated-conftest.py          # Каркас запуска тестов из generated/ без правки бэкенда (копируется как generated/conftest.py)
 │   └── sample-backend/                # Учебный бэкенд «Заметки»: main.py, README, CONTRIBUTING, ADR — если своего ещё нет
 ```
 
@@ -258,6 +262,7 @@ project-requirements-ai.md
 
 | Дата | Что изменено |
 |---|---|
+| 2026-10-28 | Структура проекта: `workshops/practice-4.md`; шаблоны практики 4 — `crewai_example.py`, `generated_files.py`, `generated-conftest.py` |
 | 2026-10-20 | Структура проекта: файлы воркшопа 4 — `workshop-4.md`, `materials-4.md`, сценарий, карточки и эталоны `workshop4/`; «Репозиторий бэкенда»: строка о линтере — до появления ruff в бэкенде (неделя 10) `run_linter` проверяет код в `generated/` помощника с `--isolated`, без конфигурации бэкенда |
 | 2026-10-19 | Структура проекта: файлы цикла 3 — `workshop-3.md`, `practice-3.md`, `materials-3.md`, сценарии и эталоны `workshop3/`, `practice3/`; шаблоны `rag_pipeline.py`, `chunking-strategies.md`; в `sample-backend/` — документация «Заметок» |
 | 2026-10-14 | Модель веток: `main` публикуется в открытом репозитории `github.com/andrey-limasov/agent-dev`, `teacher` — только в приватном; новый подраздел «Как студенту получить материалы» (`git clone`, проверка, `git pull`, архив как запасной путь) |
@@ -267,5 +272,5 @@ project-requirements-ai.md
 
 ---
 
-*Последнее обновление: 20 октября 2026*
-*Версия документа: 1.8*
+*Последнее обновление: 28 октября 2026*
+*Версия документа: 1.9*
