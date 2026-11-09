@@ -64,6 +64,7 @@ multi-agent/
 │   ├── practice-4.md                  # Практика 4: Первая Crew и цикл «генерация → линтер → исправление» (180 мин)
 │   ├── materials-4.md                 # Материалы к циклу 4: СРС, справка по паттернам CrewAI, каркасы архитектуры Crew и ADR 004
 │   ├── workshop-5.md                  # Воркшоп 5: Контракт API и контракт результата помощника (90 мин)
+│   ├── practice-5.md                  # Практика 5: OpenAPI-схема и контракт результата (180 мин)
 │   └── materials-5.md                 # Материалы к циклу 5: входной билет, справка по Structured Output, каркасы контракта и ADR 005
 │
 ├── workshops-teacher/                 # Методические материалы для преподавателя (только ветка teacher)
@@ -92,10 +93,12 @@ multi-agent/
 │   │   └── workshop-4-reference.md    # Эталоны: прогон трёх паттернов, архитектура Crew для «Заметок»
 │   ├── practice4/
 │   │   └── practice-4-scenario.md     # Сценарий практики: тайминг, стоп-точки, критерии
-│   └── workshop5/
-│       ├── workshop-5-scenario.md     # Поминутный сценарий воркшопа
-│       ├── workshop-5-cards.md        # Карточки эндпоинтов, сбоев и плохих ответов модели
-│       └── workshop-5-reference.md    # Эталоны: вердикты, контракт результата для «Заметок»
+│   ├── workshop5/
+│   │   ├── workshop-5-scenario.md     # Поминутный сценарий воркшопа
+│   │   ├── workshop-5-cards.md        # Карточки эндпоинтов, сбоев и плохих ответов модели
+│   │   └── workshop-5-reference.md    # Эталоны: вердикты, контракт результата для «Заметок»
+│   └── practice5/
+│       └── practice-5-scenario.md     # Сценарий практики: тайминг, стоп-точки, оценка
 │
 ├── templates/                         # Шаблоны для студентов
 │   ├── test_agent_mocked.py           # Шаблон тестирования с моками LLM
@@ -106,6 +109,10 @@ multi-agent/
 │   ├── crewai_example.py              # Каркас запуска Crew «Исследователь → Кодер» (копируется как ai/run_crew.py)
 │   ├── generated_files.py             # Каркас Tool write_generated и второго корня run_linter (копируется как ai/tools/generated_files.py)
 │   ├── generated-conftest.py          # Каркас запуска тестов из generated/ без правки бэкенда (копируется как generated/conftest.py)
+│   ├── openapi_client.py              # Каркас Tool чтения OpenAPI-схемы стенда
+│   ├── structured_output_example.py   # Каркас контракта итога Crew и проверок кодом
+│   ├── assistant-cli.py               # Каркас запуска `python -m ai <сценарий>`
+│   ├── backend-week8-openapi.json     # Схема бэкенда недели 8 для запасного пути
 │   └── sample-backend/                # Учебный бэкенд «Заметки»: main.py, README, CONTRIBUTING, ADR — если своего ещё нет
 ```
 
@@ -180,8 +187,8 @@ project-requirements-ai.md
 ### Репозиторий бэкенда (из курса "Конфигурирование") — объект работы помощника:
 - Код FastAPI-приложения и OpenAPI-схема (`/openapi.json` работающего приложения при `APP_ENV=dev`, в `prod` схема отключена) — что помощник читает и анализирует
 - Docker Compose (FastAPI + PostgreSQL) — локальный стенд, на котором помощник получает OpenAPI-схему при `APP_ENV=dev`
-- Pre-commit (с недели 8 «Конфигурирования») и ruff (с недели 10) — до появления ruff в бэкенде `run_linter` проверяет сгенерированный код в `generated/` помощника правилами ruff по умолчанию (`--isolated`), а не конфигурацией бэкенда
-- PR-процесс и CI/CD пайплайн (GitHub Actions / GitLab CI) — через них результат помощника попадает в бэкенд
+- Pre-commit (с недели 8 «Конфигурирования») и ruff (с недели 10) — до появления конфигурации ruff `run_linter` проверяет сгенерированный код в `generated/` помощника правилами ruff по умолчанию (`--isolated`), а не конфигурацией бэкенда
+- PR-процесс и CI/CD пайплайн (GitHub Actions) — через них результат помощника попадает в бэкенд
 - PostgreSQL, миграции, деплой на VPS — зона "Конфигурирования"; помощник их не меняет
 
 ---
@@ -270,6 +277,7 @@ project-requirements-ai.md
 
 | Дата | Что изменено |
 |---|---|
+| 2026-11-09 | Структура проекта: `workshops/practice-5.md`, сценарий практики 5, четыре шаблона цикла 5; `--isolated` пересматривается при появлении конфигурации ruff; из строки про CI убран GitLab CI |
 | 2026-11-07 | Структура проекта: файлы воркшопа 5 — `workshop-5.md`, `materials-5.md`, сценарий, карточки и эталоны `workshop5/`; в дереве добавлен `practice4/`; «Репозиторий бэкенда»: `/openapi.json` — при `APP_ENV=dev`, в `prod` схема отключена |
 | 2026-10-28 | Структура проекта: `workshops/practice-4.md`; шаблоны практики 4 — `crewai_example.py`, `generated_files.py`, `generated-conftest.py` |
 | 2026-10-20 | Структура проекта: файлы воркшопа 4 — `workshop-4.md`, `materials-4.md`, сценарий, карточки и эталоны `workshop4/`; «Репозиторий бэкенда»: строка о линтере — до появления ruff в бэкенде (неделя 10) `run_linter` проверяет код в `generated/` помощника с `--isolated`, без конфигурации бэкенда |
